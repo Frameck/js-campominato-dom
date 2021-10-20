@@ -4,7 +4,7 @@ const boxContainer = document.querySelector('.box-container')
 const difficultySelect = document.getElementById('difficulty-select')
 
 const bombArray = [] // tiene traccia della posizione delle bombe
-const userPoints = [] // tiene traccia dei punti segnati dallo user
+let userPoints = [] // tiene traccia dei punti segnati dallo user
 
 
 playButton.addEventListener('click', function() {
@@ -74,7 +74,8 @@ function generateGridLayout(difficultyLevel) {
                 setTimeout(function() {
                     alert(`Hai trovato una bomba.\nHai perso con un punteggio di ${totUserPoints}`)
                     boxContainer.innerHTML = ''
-                }, 1000);
+                    userPoints = []
+                }, 500);
             } else {
                 this.classList.add('box-active')
                 userPoints.push(clickedBoxIndex)
