@@ -70,6 +70,7 @@ function generateGridLayout(difficultyLevel) {
             if (boxIsBomb) {
                 this.classList.add('bomb')
                 let totUserPoints = userPoints.length
+                showAllBombs()
                 // aggiungo 1,5sec di delay prima di resettare il gioco
                 setTimeout(function() {
                     alert(`Hai trovato una bomba.\nHai perso con un punteggio di ${totUserPoints}`)
@@ -113,5 +114,17 @@ function generateBombs(totBombNumber, totalBoxNumber) {
         } else {
             bombArray.push(newBomb)
         }
+    }
+}
+
+
+/**
+ * Funzione che mostra tutte le bombe quando si perde la partita
+ */
+function showAllBombs() {
+    for (let i = 1; i < bombArray.length +1; i++) {
+        const bomb = bombArray[i - 1];
+        const boxBomb = document.querySelector(`:nth-child(${bomb})`)
+        boxBomb.classList.add('bomb')
     }
 }
